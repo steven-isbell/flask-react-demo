@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import Hello from './Hello/Hello';
 
 class App extends Component {
   render() {
-    return <div>Hello World</div>;
+    return (
+      <div>
+        <Hello name="Steven" />
+      </div>
+    );
   }
 }
 

@@ -9,10 +9,11 @@ app = Flask(__name__)
 # def serve():
 #     return send_from_directory('../dist', 'index.html')
 
+greeting_list = ["Hi", "Hello", "Good To See You", "Welcome", "Hi There"]
+
 
 @app.route("/api/hello")
 def get_hello():
-    greeting_list = ["Hi", "Hello", "Good To See You", "Welcome", "Hi There"]
     return random.choice(greeting_list)
 
 

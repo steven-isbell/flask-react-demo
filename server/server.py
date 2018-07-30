@@ -2,13 +2,12 @@ import os
 from flask import Flask, send_from_directory
 import random
 
-app = Flask(__name__, static_folder="../dist",
-            template_folder="../dist")
+app = Flask(__name__)
 
 
-@app.route('/')
-def serve():
-    return send_from_directory('../dist', 'index.html')
+# @app.route('/')
+# def serve():
+#     return send_from_directory('../dist', 'index.html')
 
 
 @app.route("/api/hello")

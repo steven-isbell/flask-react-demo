@@ -7,3 +7,6 @@ lib/
 
 pip-selfcheck.json
 .Python
+
+credentials.json
+token.json

@@ -3,6 +3,11 @@ from apiclient.discovery import build
 from httplib2 import Http
 from oauth2client import file as oauth_file, client, tools
 
+# file to load
+file_to_load = 'WDL16 - Student Tracker.xlsx'
+file_id = None
+
+
 # Setup the Drive v3 API
 SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly'
 store = oauth_file.Storage('token.json')
@@ -14,11 +19,19 @@ service = build('drive', 'v3', http=creds.authorize(Http()))
 
 # Call the Drive v3 API
 results = service.files().list(
-    pageSize=10, fields="nextPageToken, files(id, name)").execute()
+    pageSize=1000, fields="nextPageToken, files(id, name)").execute()
 items = results.get('files', [])
 if not items:
     print('No files found.')
 else:
     print('Files:')
     for item in items:
-        print('{0} ({1})'.format(item['name'], item['id']))
+        if item['name'] == file_to_load:
+            print('{0} ({1})'.format(item['name'], item['id']))
+
+
+def print_file_content():
+    try:
+        print service.files().get_media(fileId=file_id).execute()
+    except errors.HttpError, error:
+        print 'An error occurred: %s' % error

@@ -9,10 +9,14 @@
     "react-scripts": "1.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start-dev": "concurrently --kill-other \"react-scripts start\" \"FLASK_ENV=development python server/server.py\"",
+    "start-prod": "FLASK_ENV=production python server/server.py",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:5000",
+  "devDependencies": {
+    "concurrently": "^3.6.1"
+  }
 }

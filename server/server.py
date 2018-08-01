@@ -5,9 +5,10 @@ import random
 app = Flask(__name__)
 
 
-# @app.route('/')
-# def serve():
-#     return send_from_directory('../dist', 'index.html')
+if os.environ['FLASK_ENV'] == 'production':
+    @app.route('/')
+    def serve():
+        return send_from_directory('../build', 'index.html')
 
 greeting_list = ["Hi", "Hello", "Good To See You", "Welcome", "Hi There"]
 

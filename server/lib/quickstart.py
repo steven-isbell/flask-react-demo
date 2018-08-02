@@ -28,10 +28,11 @@ else:
     for item in items:
         if item['name'] == file_to_load:
             print('{0} ({1})'.format(item['name'], item['id']))
+            file_id = item['id']
 
 
 def print_file_content():
-    try:
-        print service.files().get_media(fileId=file_id).execute()
-    except errors.HttpError, error:
-        print 'An error occurred: %s' % error
+    # try:
+    print(service.files().get_media(fileId=file_id).execute())
+    # except errors.HttpError, error:
+    #     print('An error occurred: %s' % error)

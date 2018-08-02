@@ -1,21 +1,18 @@
-import os
+from os import environ
 from flask import Flask, send_from_directory
-import random
+from lib import quickstart
 
 app = Flask(__name__)
 
-
-if os.environ['FLASK_ENV'] == 'production':
+if environ['FLASK_ENV'] == 'production':
     @app.route('/')
     def serve():
         return send_from_directory('../build', 'index.html')
 
-greeting_list = ["Hi", "Hello", "Good To See You", "Welcome", "Hi There"]
 
-
-@app.route("/api/hello")
-def get_hello():
-    return random.choice(greeting_list)
+@app.route("/api/students")
+def get_students():
+    return quickstart.file_id
 
 
 if __name__ == "__main__":

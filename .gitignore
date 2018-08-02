@@ -3,7 +3,8 @@ dist/
 
 bin/
 include/
-lib/
+/lib/
+server/lib/__pycache__
 
 pip-selfcheck.json
 .Python

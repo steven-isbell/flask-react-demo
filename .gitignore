@@ -11,3 +11,5 @@ pip-selfcheck.json
 
 credentials.json
 token.json
+
+.vscode

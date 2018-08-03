@@ -7,8 +7,7 @@ class FileForm extends Component {
     const formData = new FormData();
     formData.append('data_file', this.uploadedFile.files[0]);
     formData.append('filename', 'data_file');
-    const data = await axios.post('/api/students', formData);
-    console.log(data);
+    const { data } = await axios.post('/api/students', formData);
   };
   render() {
     return (

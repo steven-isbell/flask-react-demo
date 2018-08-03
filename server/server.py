@@ -12,7 +12,6 @@ if environ['FLASK_ENV'] == 'production':
 
 @app.route("/api/students", methods=["POST"])
 def get_students():
-    print(request.files)
     result = read_csv.read(request.files['data_file'])
     response = make_response(result)
     return response

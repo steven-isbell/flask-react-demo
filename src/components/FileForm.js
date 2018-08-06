@@ -8,6 +8,8 @@ class FileForm extends Component {
     formData.append('data_file', this.uploadedFile.files[0]);
     formData.append('filename', 'data_file');
     const { data } = await axios.post('/api/students', formData);
+    const names = data.split('\n').map(val => val.split(',')[0]);
+    this.props.handleChildState({ names });
   };
   render() {
     return (

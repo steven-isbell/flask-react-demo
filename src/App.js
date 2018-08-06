@@ -4,10 +4,13 @@ import logo from './logo.svg';
 import './App.css';
 
 import FileForm from './components/FileForm';
+import TeamBuilder from './components/TeamBuilder';
 
 class App extends Component {
-  state = {};
-
+  state = { names: [], teamSize: 0 };
+  handleChildState = val => {
+    this.setState(val);
+  };
   render() {
     return (
       <div className="App">
@@ -15,12 +18,14 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Random Team Generator</h1>
         </header>
-        <FileForm />
+        <div>
+          <h3>Submit a CSV with a names column and rows of names.</h3>
+          <FileForm handleChildState={this.handleChildState} />
+        </div>
+        <TeamBuilder {...this.state} />
       </div>
     );
   }
 }
 
 export default App;
-
-// action="/api/students" method="post" enctype="multipart/form-data"

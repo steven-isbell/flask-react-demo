@@ -1,6 +1,6 @@
 from os import environ
 from flask import Flask, send_from_directory, make_response, request
-from lib import read_csv
+from lib import read_csv, generate_teams
 
 app = Flask(__name__)
 
@@ -15,6 +15,12 @@ def get_students():
     result = read_csv.read(request.files['data_file'])
     response = make_response(result)
     return response
+
+
+@app.route('/api/teams', methods=["POST"])
+def build_teams():
+    print(request.form['names'], request.form['size'])
+    result = generate_teams.generate_team()
 
 
 if __name__ == "__main__":

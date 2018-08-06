@@ -6,6 +6,10 @@ import './App.css';
 import FileForm from './components/FileForm';
 import TeamBuilder from './components/TeamBuilder';
 
+// rewrite so they upload a file or enter comma delimited string,
+// and the number of teams
+// then randomize on the server
+
 class App extends Component {
   state = { names: [] };
   handleChildState = val => {

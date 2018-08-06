@@ -19,8 +19,9 @@ def get_students():
 
 @app.route('/api/teams', methods=["POST"])
 def build_teams():
-    print(request.form['names'], request.form['size'])
-    result = generate_teams.generate_team()
+    print(request.data)
+    result = generate_teams.generate_team(
+        request.data['size'], request.data['names'])
 
 
 if __name__ == "__main__":

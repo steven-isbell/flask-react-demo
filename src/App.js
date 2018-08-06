@@ -7,7 +7,7 @@ import FileForm from './components/FileForm';
 import TeamBuilder from './components/TeamBuilder';
 
 class App extends Component {
-  state = { names: [], teamSize: 0 };
+  state = { names: [] };
   handleChildState = val => {
     this.setState(val);
   };

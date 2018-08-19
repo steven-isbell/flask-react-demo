@@ -10,18 +10,12 @@ if environ['FLASK_ENV'] == 'production':
         return send_from_directory('../build', 'index.html')
 
 
-@app.route("/api/students", methods=["POST"])
-def get_students():
-    result = read_csv.read(request.files['data_file'])
-    response = make_response(result)
-    return response
-
-
 @app.route('/api/teams', methods=["POST"])
 def build_teams():
     print(request.data)
-    result = generate_teams.generate_team(
-        request.data['size'], request.data['names'])
+    result = read_csv.read(request.files['data_file'])
+    teams = generate_teams.generate_team(
+        request.data['size'], result)
 
 
 if __name__ == "__main__":

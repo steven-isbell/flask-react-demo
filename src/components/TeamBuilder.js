@@ -1,27 +1,18 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-class TeamBuilder extends Component {
-  state = { size: 0 };
-  handleShuffle = async (size = 2, names) => {
-    const teams = await axios.post('/api/teams', { size, names });
-  };
-  render() {
-    return (
-      <div>
-        <p>How many people per team?</p>
-        <input
-          type="number"
-          onChange={e => this.setState({ size: e.target.value })}
-        />
-        <button
-          onClick={() => this.handleShuffle(this.state.size, this.props.names)}
-        >
-          Generate
-        </button>
-      </div>
-    );
-  }
-}
+const TeamBuilder = ({ handleChildState }) => (
+  <div>
+    <p>How many people per team?</p>
+    <input
+      type="number"
+      onChange={e => handleChildState({ size: e.target.value })}
+    />
+  </div>
+);
+
+TeamBuilder.propTypes = {
+  handleChildState: PropTypes.func.isRequired
+};
 
 export default TeamBuilder;

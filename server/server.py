@@ -12,7 +12,6 @@ if environ['FLASK_ENV'] == 'production':
 
 @app.route('/api/teams', methods=["POST"])
 def build_teams():
-    print(request.data)
     result = read_csv.read(request.files['data_file'])
     teams = generate_teams.generate_team(
         request.data['size'], result)

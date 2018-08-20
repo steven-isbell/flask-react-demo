@@ -5,7 +5,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import FileForm from './components/FileForm';
-import TeamBuilder from './components/TeamBuilder';
+import TeamCount from './components/TeamCount';
 import Modal from './components/Modal';
 import ErrorModal from './components/ErrorModal';
 
@@ -32,6 +32,11 @@ class App extends Component {
         errMessage: 'Please include a team size and a list of names'
       }));
     }
+    const response = await axios.post('/api/teams', {
+      size: this.state.size,
+      form: this.state.form
+    });
+    console.log(response);
   };
   render() {
     return (
@@ -44,7 +49,10 @@ class App extends Component {
           <h3>Submit a CSV with a names column and rows of names.</h3>
           <FileForm handleFormSubmit={this.handleFormSubmit} />
         </div>
-        {TeamBuilder({ handleChildState: this.handleChildState })}
+        {TeamCount({
+          handleChildState: this.handleChildState,
+          size: this.state.size
+        })}
         <button onClick={this.generateTeams}>Submit</button>
         {this.state.didErr && (
           <Modal show={this.state.didErr}>

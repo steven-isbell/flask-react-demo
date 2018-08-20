@@ -4,16 +4,7 @@ import PropTypes from 'prop-types';
 
 const Modal = ({ children, show }) => {
   return (
-    <div
-      style={{
-        display: show ? 'block' : 'none',
-        position: 'absolute',
-        zIndex: 10,
-        height: '100vh',
-        background: 'black',
-        opacity: 0.7
-      }}
-    >
+    <div style={{ display: show ? 'block' : 'none' }}>
       {createPortal(children, document.getElementById('portal'))}
     </div>
   );
